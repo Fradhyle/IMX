@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import pyodbc
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 try:
     SECRET_KEY = os.environ["SECRET_KEY"]
 except KeyError:
-    with open(BASE_DIR / "SECRET_KEY.txt") as f:
+    with open(BASE_DIR / "LOCAL_DEV_ENV" / "SECRET_KEY.txt") as f:
         SECRET_KEY = f.read().replace("\n", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -43,6 +44,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "main",
+    "users",
+    "branches",
 ]
 
 MIDDLEWARE = [
@@ -132,5 +135,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Paths for locale files
 # https://docs.djangoproject.com/en/5.1/ref/settings/#locale-paths
 LOCALE_PATHS = [
-    BASE_DIR / "Locale",
+    BASE_DIR / "locale",
 ]
+
+# Custom User model definition
+# https://docs.djangoproject.com/en/5.1/topics/auth/customizing/#substituting-a-custom-user-model
+AUTH_USER_MODEL = "users.User"
+
+# User uploaded files
+# https://docs.djangoproject.com/en/5.1/ref/settings/#media-root
+MEDIA_ROOT = "media/"
