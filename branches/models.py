@@ -100,17 +100,11 @@ class Duration(models.Model):
     )
 
     class Meta:
-        verbose_name = "지점"
-        verbose_name_plural = "지점"
+        verbose_name = "수업/휴식 시간"
+        verbose_name_plural = "수업/휴식 시간"
         ordering = [
-            "srl",
+            "branch",
         ]
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse("branches:detail", kwargs={"srl": self.srl})
 
 
 class BusinessHour(models.Model):
