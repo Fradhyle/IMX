@@ -1,4 +1,3 @@
-from branches.models import Branch
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
@@ -8,6 +7,8 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+
+from branches.models import Branch
 
 # Create your models here.
 phone_validator = RegexValidator(
@@ -99,11 +100,6 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    class Meta:
-        verbose_name = "이용자"
-        verbose_name_plural = "이용자"
-
-    objects = UserManager()
 
     GENDERS = {
         1: "남성",
@@ -127,14 +123,25 @@ class User(AbstractBaseUser, PermissionsMixin):
         "P": "장롱 면허",
     }
 
-    srl = models.BigAutoField(
-        primary_key=True,
-        verbose_name="연번",
+    username = models.CharField(
+        verbose_name="아이디",
+        max_length=150,
+        unique=True,
     )
 
-    username = models.TextField(
-        unique=True,
-        verbose_name="아이디",
+    first_name = models.CharField(
+        verbose_name="이름",
+        max_length=150,
+    )
+
+    last_name = models.CharField(
+        verbose_name="성",
+        max_length=150,
+    )
+
+    email = models.EmailField(
+        verbose_name="이메일 주소",
+        blank=True,
     )
 
     full_name = models.TextField(
@@ -211,6 +218,14 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name="가입 일시",
         default=timezone.now,
     )
+
+    objects = UserManager()
+
+    class Meta:
+        verbose_name = "이용자"
+        verbose_name_plural = "이용자"
+
+    EMAIL_FIELD = "email"
 
     USERNAME_FIELD = "username"
 

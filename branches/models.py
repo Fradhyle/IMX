@@ -84,6 +84,35 @@ class Branch(models.Model):
         return reverse("branches:detail", kwargs={"srl": self.srl})
 
 
+class Duration(models.Model):
+    branch = models.ForeignKey(
+        to="branches.Branch",
+        on_delete=models.CASCADE,
+        verbose_name="지점",
+    )
+    lesson_duration = models.DurationField(
+        verbose_name="수업 시간",
+        default=datetime.timedelta(minutes=110),
+    )
+    break_duration = models.DurationField(
+        verbose_name="쉬는 시간",
+        default=datetime.timedelta(minutes=10),
+    )
+
+    class Meta:
+        verbose_name = "지점"
+        verbose_name_plural = "지점"
+        ordering = [
+            "srl",
+        ]
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("branches:detail", kwargs={"srl": self.srl})
+
+
 class BusinessHour(models.Model):
     srl = models.BigAutoField(
         verbose_name="연번",

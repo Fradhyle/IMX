@@ -10,9 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-from pathlib import Path
 import os
-import pyodbc
+from pathlib import Path
+
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -115,33 +116,50 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "ko-kr"
 
+
 TIME_ZONE = "Asia/Seoul"
 
 USE_I18N = True
 
 USE_TZ = True
 
+# Custom auth related
+# https://docs.djangoproject.com/en/5.1/ref/settings/#auth
+#
+# Custom User model definition
+# https://docs.djangoproject.com/en/5.1/topics/auth/customizing/#substituting-a-custom-user-model
+AUTH_USER_MODEL = "users.User"
 
-# Static files (CSS, JavaScript, Images)
+# Custom static files related
+#
+# Static files path (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-STATIC_URL = "static/"
+STATIC_ROOT = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Paths for locale files
+# Custom Globalization (i18n/l10n)
+# https://docs.djangoproject.com/en/5.1/ref/settings/#globalization-i18n-l10n
+#
+# Available languages
+# https://docs.djangoproject.com/en/5.1/ref/settings/#languages
+LANGUAGES = [
+    ("ko", _("한국어")),
+    ("en", _("영어")),
+]
+
+# Paths of translation files
 # https://docs.djangoproject.com/en/5.1/ref/settings/#locale-paths
 LOCALE_PATHS = [
     BASE_DIR / "locale",
 ]
 
-# Custom User model definition
-# https://docs.djangoproject.com/en/5.1/topics/auth/customizing/#substituting-a-custom-user-model
-AUTH_USER_MODEL = "users.User"
-
-# User uploaded files
+# Custom File uploads
+# https://docs.djangoproject.com/en/5.1/ref/settings/#file-uploads
+#
+# Path of user uploaded files
 # https://docs.djangoproject.com/en/5.1/ref/settings/#media-root
 MEDIA_ROOT = "media/"

@@ -1,6 +1,7 @@
-from django.contrib import admin
 from django import forms
+from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import Groups
 from django.db import models
 
 from users.models import User
@@ -89,3 +90,68 @@ class UserModelAdmin(UserAdmin):
             },
         ),
     ]
+
+    add_fieldsets = [
+        (
+            "이용자 기본 정보",
+            {
+                "fields": (
+                    "username",
+                    "password",
+                    "branch",
+                    "license_type",
+                    "plan_type",
+                ),
+            },
+        ),
+        (
+            "개인 정보",
+            {
+                "fields": (
+                    "name",
+                    "birthday",
+                    "gender",
+                    "phone",
+                ),
+            },
+        ),
+        (
+            "권한",
+            {
+                "fields": (
+                    "staff",
+                    "superuser",
+                    "groups",
+                ),
+            },
+        ),
+    ]
+
+    search_fields = [
+        "username",
+        "name",
+    ]
+
+    ordering = [
+        "branch",
+        "date_joined",
+    ]
+
+    filter_horizontal = []
+
+    actions = [
+        deactivate_user,
+    ]
+
+    # formfield_overrides = {
+    #     models.TextField: {
+    #         "widget": forms.TextInput(
+    #             attrs={
+    #                 "size": "6",
+    #             },
+    #         )
+    #     },
+    # }
+
+
+admin.site.unregister(Groups)
