@@ -1,13 +1,13 @@
-from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
-from django.contrib.auth.models import BaseUserManager
-from django.contrib.auth.models import Group
-from django.contrib.contenttypes.models import ContentType
+from branches.models import Branch
+from django.contrib.auth.models import (
+    AbstractBaseUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 from django.core.validators import RegexValidator
+from django.db import models
 from django.urls import reverse
 from django.utils import timezone
-
-from branches.models import Branch
 
 # Create your models here.
 phone_validator = RegexValidator(
@@ -34,8 +34,8 @@ class UserManager(BaseUserManager):
             birthday=birthday,
             gender=gender,
             phone_number=phone_number,
-            license_type=kwargs["license_type"],
-            plan_type=kwargs["plan_type"],
+            # license_type=kwargs["license_type"],
+            # plan_type=kwargs["plan_type"],
             branch=Branch.objects.get(srl=branch),
         )
 
@@ -45,30 +45,64 @@ class UserManager(BaseUserManager):
         return user
 
     def create_staff(
-        self, username, full_name, birthday, gender, phone, branch, password, **kwargs
+        self,
+        username,
+        full_name,
+        birthday,
+        gender,
+        phone_number,
+        branch,
+        password=None,
+        **kwargs
     ):
         user = self.create_user(
-            username, full_name, birthday, gender, phone, branch, password, kwargs
+            username=username,
+            full_name=full_name,
+            birthday=birthday,
+            gender=gender,
+            phone_number=phone_number,
+            branch=branch,
+            password=password,
+            **kwargs,
         )
-        user.staff = True
+        user.is_staff = True
         user.save(using=self._db)
 
         return user
 
     def create_superuser(
-        self, username, full_name, birthday, gender, phone, branch, password, **kwargs
+        self,
+        username,
+        full_name,
+        birthday,
+        gender,
+        phone_number,
+        branch,
+        password,
+        **kwargs
     ):
         user = self.create_user(
-            username, full_name, birthday, gender, phone, branch, password, kwargs
+            username=username,
+            full_name=full_name,
+            birthday=birthday,
+            gender=gender,
+            phone_number=phone_number,
+            branch=branch,
+            password=password,
+            **kwargs,
         )
-        user.staff = True
-        user.superuser = True
+        user.is_staff = True
+        user.is_superuser = True
         user.save(using=self._db)
 
         return user
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
+    class Meta:
+        verbose_name = "이용자"
+        verbose_name_plural = "이용자"
+
     objects = UserManager()
 
     GENDERS = {
@@ -153,14 +187,14 @@ class User(AbstractBaseUser):
         default=None,
     )
 
-    is_staff = models.BooleanField(
-        verbose_name="직원 여부",
-        default=False,
-    )
-
     is_active = models.BooleanField(
         verbose_name="계정 상태",
         default=True,
+    )
+
+    is_staff = models.BooleanField(
+        verbose_name="직원 여부",
+        default=False,
     )
 
     is_superuser = models.BooleanField(
@@ -182,4 +216,8 @@ class User(AbstractBaseUser):
 
     REQUIRED_FIELDS = [
         "branch",
+        "full_name",
+        "birthday",
+        "gender",
+        "phone_number",
     ]

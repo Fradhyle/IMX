@@ -1,11 +1,12 @@
-from django.db import models
-from django.core.validators import RegexValidator
 import datetime
+
+from django.core.validators import RegexValidator
+from django.db import models
 from django.urls import reverse
 
 # Create your models here.
 phone_validator = RegexValidator(
-    regex="\d{2,4}-?\d{3,4}(-?\d{4})?",
+    regex=r"\d{2,4}-?\d{3,4}(-?\d{4})?",
     message="올바른 전화번호 형식이 아닙니다.",
 )
 
