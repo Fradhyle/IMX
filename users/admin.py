@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import Groups
+from django.contrib.auth.models import Group
 from django.db import models
 
 from users.models import User
@@ -154,4 +154,4 @@ class UserModelAdmin(UserAdmin):
     # }
 
 
-admin.site.unregister(Groups)
+admin.site.unregister(Group)
