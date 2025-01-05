@@ -1,2 +1,3 @@
 Django
-mssql-django # Install this only when use it with Microsoft SQL Server
+# Install this only when use it with Microsoft SQL Server
+# mssql-django
