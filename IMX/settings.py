@@ -148,7 +148,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#languages
 LANGUAGES = [
     ("ko", _("한국어")),
-    ("en", _("영어")),
+    ("en", _("English")),
 ]
 
 # Paths of translation files
