@@ -110,7 +110,7 @@ class UserModelAdmin(UserAdmin):
             "개인 정보",
             {
                 "fields": (
-                    "name",
+                    "full_name",
                     "birthday",
                     "gender",
                     "phone",
@@ -121,9 +121,9 @@ class UserModelAdmin(UserAdmin):
             "권한",
             {
                 "fields": (
-                    "staff",
-                    "superuser",
-                    "groups",
+                    "is_staff",
+                    "is_superuser",
+                    # "groups",
                 ),
             },
         ),
@@ -131,7 +131,7 @@ class UserModelAdmin(UserAdmin):
 
     search_fields = [
         "username",
-        "name",
+        "full_name",
     ]
 
     ordering = [
