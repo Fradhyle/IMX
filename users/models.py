@@ -1,3 +1,4 @@
+from branches.models import Branch
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
@@ -6,8 +7,7 @@ from django.contrib.auth.models import (
 from django.core.validators import RegexValidator
 from django.db import models
 from django.utils import timezone
-
-from branches.models import Branch
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 phone_validator = RegexValidator(
@@ -100,23 +100,23 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     GENDERS = {
-        1: "남성",
-        2: "여성",
+        1: _("Male"),
+        2: _("Female"),
     }
 
-    username = models.CharField(verbose_name="아이디", max_length=20, unique=True)
-    given_name = models.CharField(verbose_name="이름", max_length=20)
-    surname = models.CharField(verbose_name="성", max_length=20)
-    email = models.EmailField(verbose_name="이메일 주소", blank=True, null=True)
-    password = models.TextField(verbose_name="암호")
-    birthday = models.DateField(verbose_name="생년월일")
-    gender = models.PositiveIntegerField(verbose_name="성별", choices=GENDERS)
+    username = models.CharField(verbose_name=_("username"), max_length=20, unique=True)
+    given_name = models.CharField(verbose_name=_("given_name"), max_length=20)
+    surname = models.CharField(verbose_name=_("surname"), max_length=20)
+    email = models.EmailField(verbose_name=_("email address"), blank=True, null=True)
+    password = models.TextField(verbose_name=_("password"))
+    birthday = models.DateField(verbose_name=_("birthday"))
+    gender = models.PositiveIntegerField(verbose_name=_("gender"), choices=GENDERS)
     phone_number = models.CharField(
-        verbose_name="전화번호", max_length=14, validators=[phone_validator]
+        verbose_name=_("phone_number"), max_length=14, validators=[phone_validator]
     )
     branch = models.ForeignKey(
         to="branches.Branch",
-        verbose_name="소속 지점",
+        verbose_name=_("branch"),
         on_delete=models.SET_DEFAULT,
         default=1,
     )
