@@ -52,12 +52,12 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django.middleware.locale.LocaleMiddleware",
 ]
 
 ROOT_URLCONF = "IMX.urls"
@@ -134,7 +134,7 @@ AUTH_USER_MODEL = "users.User"
 #
 # Static files path (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-STATIC_ROOT = "static/"
+STATIC_ROOT = BASE_DIR / "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -147,7 +147,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Available languages
 # https://docs.djangoproject.com/en/5.1/ref/settings/#languages
 LANGUAGES = [
-    ("ko", _("한국어")),
+    ("ko", _("Korean")),
     ("en", _("English")),
 ]
 
@@ -162,4 +162,4 @@ LOCALE_PATHS = [
 #
 # Path of user uploaded files
 # https://docs.djangoproject.com/en/5.1/ref/settings/#media-root
-MEDIA_ROOT = "media/"
+MEDIA_ROOT = BASE_DIR / "media/"

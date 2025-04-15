@@ -4,28 +4,25 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 from django.db import models
 
-from users.models import User, UserBranch, UserType
+from users.models import User, UserBranch, UserLicenseType, UserPlanType
 
 
 # Register your models here.
-@admin.register(User)
-@admin.register(UserBranch)
-@admin.register(UserType)
 @admin.action(description="선택한 이용자를 비활성화 합니다.")
 def deactivate_user(modeladmin, request, queryset):
     queryset.update(is_active=False)
 
 
+@admin.register(User)
+@admin.register(UserBranch)
+@admin.register(UserLicenseType)
+@admin.register(UserPlanType)
 class UserModelAdmin(UserAdmin):
     date_hierarchy = "date_joined"
 
     list_display = [
-        "username",
         "full_name",
         "gender",
-        "license_type",
-        "plan_type",
-        "branch",
         "is_active",
         "is_staff",
         "is_superuser",
@@ -38,23 +35,11 @@ class UserModelAdmin(UserAdmin):
     ]
 
     list_editable = [
-        "gender",
-        "license_type",
-        "plan_type",
-        "branch",
-        "is_active",
-        "is_staff",
-        "is_superuser",
+
     ]
 
     list_filter = (
         "gender",
-        "license_type",
-        "plan_type",
-        "branch",
-        "is_active",
-        "is_staff",
-        "is_superuser",
     )
 
     fieldsets = [
@@ -64,9 +49,6 @@ class UserModelAdmin(UserAdmin):
                 "fields": [
                     "username",
                     "password",
-                    "branch",
-                    "license_type",
-                    "plan_type",
                 ],
             },
         ),
@@ -74,7 +56,8 @@ class UserModelAdmin(UserAdmin):
             "개인 정보",
             {
                 "fields": [
-                    "full_name",
+                    "surname",
+                    "given_name",
                     "birthday",
                     "gender",
                     "phone",
@@ -130,8 +113,8 @@ class UserModelAdmin(UserAdmin):
     ]
 
     search_fields = [
-        "username",
         "full_name",
+        "phone_number",
     ]
 
     ordering = [

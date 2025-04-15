@@ -1,3 +1,4 @@
+from typing import Final
 from branches.models import Branch
 from django.contrib.auth.models import (
     AbstractBaseUser,
@@ -104,29 +105,19 @@ class User(AbstractBaseUser, PermissionsMixin):
         2: _("Female"),
     }
 
-    username = models.CharField(verbose_name=_("username"), max_length=20, unique=True)
-    given_name = models.CharField(verbose_name=_("given_name"), max_length=20)
-    surname = models.CharField(verbose_name=_("surname"), max_length=20)
-    email = models.EmailField(verbose_name=_("email address"), blank=True, null=True)
-    password = models.TextField(verbose_name=_("password"))
-    birthday = models.DateField(verbose_name=_("birthday"))
-    gender = models.PositiveIntegerField(verbose_name=_("gender"), choices=GENDERS)
-    phone_number = models.CharField(
-        verbose_name=_("phone_number"), max_length=14, validators=[phone_validator]
-    )
-    branch = models.ForeignKey(
-        to="branches.Branch",
-        verbose_name=_("branch"),
-        on_delete=models.SET_DEFAULT,
-        default=1,
-    )
-    is_active = models.BooleanField(verbose_name="계정 상태", default=True)
-    is_staff = models.BooleanField(verbose_name="직원 여부", default=False)
-    is_superuser = models.BooleanField(verbose_name="최고관리자 여부", default=False)
-    last_login = models.DateTimeField(
-        verbose_name="최종 접속 일시", default=timezone.now
-    )
-    date_joined = models.DateTimeField(verbose_name="가입 일시", default=timezone.now)
+    username = models.CharField(verbose_name=_("Username"), max_length=20, unique=True,)
+    given_name = models.CharField(verbose_name=_("Given Name"), max_length=20,)
+    surname = models.CharField(verbose_name=_("Surname"), max_length=20,)
+    email = models.EmailField(verbose_name=_("Email Address"), blank=True, null=True,)
+    password = models.TextField(verbose_name=_("Password"),)
+    birthday = models.DateField(verbose_name=_("Birthday"),)
+    gender = models.PositiveIntegerField(verbose_name=_("Gender"), choices=GENDERS,)
+    phone_number = models.CharField(verbose_name=_("Phone Number"), max_length=14, validators=[phone_validator],)
+    is_active = models.BooleanField(verbose_name=_("Is Active"), default=True,)
+    is_staff = models.BooleanField(verbose_name=_("Is Staff"), default=False,)
+    is_superuser = models.BooleanField(verbose_name=_("Is Superuser"), default=False,)
+    last_login = models.DateTimeField(verbose_name=_("Last Login"), default=timezone.now,)
+    date_joined = models.DateTimeField(verbose_name=_("Date Joined"), default=timezone.now,)
 
     objects = UserManager()
 
@@ -138,13 +129,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.full_name
 
     class Meta:
-        verbose_name = "이용자"
-        verbose_name_plural = "이용자"
+        verbose_name = _("User")
+        verbose_name_plural = _("Users")
 
     USERNAME_FIELD = "username"
     EMAIL_FIELD = "email"
     REQUIRED_FIELDS = [
-        "branch",
         "given_name",
         "surname",
         "birthday",
@@ -158,35 +148,39 @@ class UserBranch(models.Model):
     branch = models.ForeignKey(Branch, to_field="srl", on_delete=models.DO_NOTHING)
 
 
-class UserType(models.Model):
-    LICENSE_TYPES = {
-        "1L": "1종 대형",
-        "1O": "1종 보통",
-        "1OA": "1종 보통 (자동)",
-        "2O": "2종 보통",
-        "2OA": "2종 보통 (자동)",
-        "P": "장롱 면허",
-    }
-    PLAN_TYPES = {
-        "T": "시간제",
-        "GA": "합격 보장제",
-        "GC": "기능 보장제",
-        "GR": "도로주행 보장제",
-        "P": "장롱 면허",
+class UserLicenseType(models.Model):
+    LICENSE_TYPES: Final[dict] = {
+        "1L": _("License 1L"),
+        "1O": _("License 1O"),
+        "1OA": _("License 1OA"),
+        "2O": _("License 2O"),
+        "2OA": _("License 2OA"),
+        "LD": _("License LD"),
     }
 
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     license_type = models.CharField(
         max_length=3,
-        verbose_name="면허 종류",
+        verbose_name=_("License Type"),
         choices=LICENSE_TYPES,
         blank=True,
         null=True,
         default=None,
     )
+
+class UserPlanType(models.Model):
+    PLAN_TYPES: Final[dict] = {
+        "T": _("Plan T"),
+        "GA": _("Plan GA"),
+        "GC": _("Plan GC"),
+        "GR": _("Plan GR"),
+        "LD": _("Plan LD"),
+    }
+
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
     plan_type = models.CharField(
         max_length=2,
-        verbose_name="요금제 유형",
+        verbose_name=_("Plan Type"),
         choices=PLAN_TYPES,
         blank=True,
         null=True,
