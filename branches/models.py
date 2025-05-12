@@ -62,14 +62,14 @@ class Branch(models.Model):
     class Meta:
         verbose_name = _("지점")
         ordering = [
-            "srl",
+            "serial",
         ]
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("branches:detail", kwargs={"srl": self.srl})
+        return reverse("branches:detail", kwargs={"serial": self.serial})
 
 
 class Duration(models.Model):
@@ -130,7 +130,7 @@ class BusinessHour(models.Model):
         ]
 
     # def get_absolute_url(self):
-    #     return reverse("branches:hours", kwargs={"branch": self.branch.srl})
+    #     return reverse("branches:hours", kwargs={"branch": self.branch.serial})
 
 
 class Timetable(models.Model):
@@ -177,4 +177,4 @@ class Timetable(models.Model):
         ]
 
     # def get_absolute_url(self):
-    #     return reverse("timetables:detail", kwargs={"branch": self.branch.srl})
+    #     return reverse("timetables:detail", kwargs={"branch": self.branch.serial})

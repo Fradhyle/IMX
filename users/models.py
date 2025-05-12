@@ -175,7 +175,7 @@ class UserBranch(models.Model):
     )
     branch = models.ForeignKey(
         Branch,
-        to_field="srl",
+        to_field="serial",
         on_delete=models.DO_NOTHING,
     )
 
