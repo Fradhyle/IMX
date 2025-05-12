@@ -1,71 +1,66 @@
 import datetime
 
-from django.core.validators import RegexValidator
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
+from IMX.validators import phone_number_validator
+
+
 # Create your models here.
-phone_validator = RegexValidator(
-    regex=r"\d{2,4}-?\d{3,4}(-?\d{4})?",
-    message="올바른 전화번호 형식이 아닙니다.",
-)
-
-
 class Branch(models.Model):
-    srl = models.BigAutoField(
-        verbose_name=_("Serial"),
+    serial = models.BigAutoField(
+        verbose_name=_("연번"),
         primary_key=True,
     )
     name = models.CharField(
-        verbose_name=_("Branch Name"),
+        verbose_name=_("지점명"),
         unique=True,
         max_length=255,
     )
     equipment_count = models.PositiveIntegerField(
-        verbose_name=_("Equipment Count"),
+        verbose_name=_("장비대수"),
         default=5,
     )
     postcode = models.CharField(
-        verbose_name=_("Postcode"),
+        verbose_name=_("우편번호"),
         max_length=5,
     )
-    address1 = models.CharField(
-        verbose_name=_("Street Address"),
+    street_address = models.CharField(
+        verbose_name=_("도로명 주소"),
         max_length=255,
     )
-    address2 = models.CharField(
-        verbose_name=_("Detailed Address"),
+    detailed_address = models.CharField(
+        verbose_name=_("상세 주소"),
         blank=True,
         max_length=255,
     )
-    phone1 = models.CharField(
-        verbose_name=_("Phone Number 1"),
+    phone_number_1 = models.CharField(
+        verbose_name=_("전화번호 1"),
         max_length=14,
         validators=[
-            phone_validator,
+            phone_number_validator,
         ],
     )
-    phone2 = models.CharField(
-        verbose_name=_("Phone Number 2"),
+    phone_number_2 = models.CharField(
+        verbose_name=_("전화번호 2"),
         max_length=14,
         validators=[
-            phone_validator,
+            phone_number_validator,
         ],
-        blank=True,
+        null=True,
     )
-    is_open = models.BooleanField(
-        verbose_name=_("Is Open"),
+    status = models.BooleanField(
+        verbose_name=_("영업 여부"),
         default=True,
         choices=(
-            (True, _("Open")),
-            (False, _("Shut Down")),
+            (True, _("영업 중")),
+            (False, _("폐업")),
         ),
     )
 
     class Meta:
-        verbose_name = _("Branch")
-        verbose_name_plural = _("Branches")
+        verbose_name = _("지점")
         ordering = [
             "srl",
         ]
@@ -81,20 +76,19 @@ class Duration(models.Model):
     branch = models.ForeignKey(
         to="branches.Branch",
         on_delete=models.CASCADE,
-        verbose_name = _("Branch"),
+        verbose_name=_("지점"),
     )
     lesson_duration = models.DurationField(
-        verbose_name=_("Lesson Duration"),
+        verbose_name=_("수업 시간"),
         default=datetime.timedelta(minutes=110),
     )
     break_duration = models.DurationField(
-        verbose_name=_("Break Duration"),
+        verbose_name=_("휴식 시간"),
         default=datetime.timedelta(minutes=10),
     )
 
     class Meta:
-        verbose_name = _("Duration")
-        verbose_name_plural = _("Durations")
+        verbose_name = _("시간")
         ordering = [
             "branch",
         ]
@@ -104,28 +98,27 @@ class BusinessHour(models.Model):
     branch = models.ForeignKey(
         "branches.Branch",
         on_delete=models.CASCADE,
-        verbose_name = _("Branch"),
+        verbose_name=_("지점"),
     )
     is_weekday = models.BooleanField(
-        verbose_name=_("Is Weekday"),
+        verbose_name=_("평일 여부"),
         default=True,
         choices=(
-            (True, _("Weekday")),
-            (False, _("Holiday")),
+            (True, _("평일")),
+            (False, _("휴일")),
         ),
     )
     open_time = models.TimeField(
-        verbose_name=_("Open Time"),
+        verbose_name=_("개점 시간"),
         default=datetime.time(9, 0),
     )
     close_time = models.TimeField(
-        verbose_name=_("Close Time"),
+        verbose_name=_("폐점 시간"),
         default=datetime.time(23, 0),
     )
 
     class Meta:
-        verbose_name = _("Business Hour")
-        verbose_name_plural = _("Business Hours")
+        verbose_name = _("영업 시간")
         ordering = [
             "branch",
             "is_weekday",
@@ -141,38 +134,37 @@ class BusinessHour(models.Model):
 
 
 class Timetable(models.Model):
-    srl = models.BigAutoField(
+    serial = models.BigAutoField(
         primary_key=True,
-        verbose_name="연번",
+        verbose_name=_("연번"),
     )
     branch = models.ForeignKey(
         "branches.Branch",
         on_delete=models.CASCADE,
-        verbose_name="지점",
+        verbose_name=_("지점"),
     )
     is_weekday = models.BooleanField(
-        verbose_name=_("Is Weekday"),
+        verbose_name=_("평일 여부"),
         default=True,
         choices=(
-            (True, _("Weekday")),
-            (False, _("Holiday")),
+            (True, _("평일")),
+            (False, _("휴일")),
         ),
     )
     period = models.DecimalField(
         max_digits=2,
         decimal_places=0,
-        verbose_name=_("Period"),
+        verbose_name=_("교시"),
     )
     start_time = models.TimeField(
-        verbose_name=_("Start Time"),
+        verbose_name=_("시작 시간"),
     )
     end_time = models.TimeField(
-        verbose_name=_("End Time"),
+        verbose_name=_("종료 시간"),
     )
 
     class Meta:
-        verbose_name = _("Timetable")
-        verbose_name_plural = _("Timetables")
+        verbose_name = _("시간표")
         ordering = [
             "branch",
             "is_weekday",

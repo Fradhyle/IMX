@@ -1,43 +1,37 @@
 from typing import Final
-from branches.models import Branch
+
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
     PermissionsMixin,
 )
-from django.core.validators import RegexValidator
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
+from branches.models import Branch
+from IMX.validators import phone_number_validator
+
+
 # Create your models here.
-phone_validator = RegexValidator(
-    regex=r"\d{2,4}-?\d{3,4}-?\d{4}",
-    message="올바른 전화번호 형식이 아닙니다.",
-)
-
-
 class UserManager(BaseUserManager):
     def create_user(
         self,
         username,
-        given_name,
         surname,
+        given_name,
         birthday,
         gender,
         phone_number,
-        branch,
         password=None,
-        **kwargs,
     ):
         user = self.model(
             username=username,
-            given_name=given_name,
             surname=surname,
+            given_name=given_name,
             birthday=birthday,
             gender=gender,
             phone_number=phone_number,
-            branch=Branch.objects.get(srl=branch),
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -46,25 +40,21 @@ class UserManager(BaseUserManager):
     def create_staff(
         self,
         username,
-        given_name,
         surname,
+        given_name,
         birthday,
         gender,
         phone_number,
-        branch,
         password=None,
-        **kwargs,
     ):
         user = self.create_user(
             username=username,
-            given_name=given_name,
             surname=surname,
+            given_name=given_name,
             birthday=birthday,
             gender=gender,
             phone_number=phone_number,
-            branch=branch,
             password=password,
-            **kwargs,
         )
         user.is_staff = True
         user.save(using=self._db)
@@ -73,25 +63,21 @@ class UserManager(BaseUserManager):
     def create_superuser(
         self,
         username,
-        given_name,
         surname,
+        given_name,
         birthday,
         gender,
         phone_number,
-        branch,
-        password,
-        **kwargs,
+        password=None,
     ):
         user = self.create_user(
             username=username,
-            given_name=given_name,
             surname=surname,
+            given_name=given_name,
             birthday=birthday,
             gender=gender,
             phone_number=phone_number,
-            branch=branch,
             password=password,
-            **kwargs,
         )
         user.is_staff = True
         user.is_superuser = True
@@ -100,24 +86,64 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    GENDERS = {
-        1: _("Male"),
-        2: _("Female"),
+    GENDERS: Final[dict] = {
+        1: _("남성"),
+        2: _("여성"),
     }
 
-    username = models.CharField(verbose_name=_("Username"), max_length=20, unique=True,)
-    given_name = models.CharField(verbose_name=_("Given Name"), max_length=20,)
-    surname = models.CharField(verbose_name=_("Surname"), max_length=20,)
-    email = models.EmailField(verbose_name=_("Email Address"), blank=True, null=True,)
-    password = models.TextField(verbose_name=_("Password"),)
-    birthday = models.DateField(verbose_name=_("Birthday"),)
-    gender = models.PositiveIntegerField(verbose_name=_("Gender"), choices=GENDERS,)
-    phone_number = models.CharField(verbose_name=_("Phone Number"), max_length=14, validators=[phone_validator],)
-    is_active = models.BooleanField(verbose_name=_("Is Active"), default=True,)
-    is_staff = models.BooleanField(verbose_name=_("Is Staff"), default=False,)
-    is_superuser = models.BooleanField(verbose_name=_("Is Superuser"), default=False,)
-    last_login = models.DateTimeField(verbose_name=_("Last Login"), default=timezone.now,)
-    date_joined = models.DateTimeField(verbose_name=_("Date Joined"), default=timezone.now,)
+    username = models.CharField(
+        verbose_name=_("이용자명"),
+        max_length=20,
+        unique=True,
+    )
+    surname = models.CharField(
+        verbose_name=_("성"),
+        max_length=20,
+    )
+    given_name = models.CharField(
+        verbose_name=_("이름"),
+        max_length=20,
+    )
+    email = models.EmailField(
+        verbose_name=_("이메일 주소"),
+        blank=True,
+        null=True,
+    )
+    password = models.TextField(
+        verbose_name=_("암호"),
+    )
+    birthday = models.DateField(
+        verbose_name=_("생일"),
+    )
+    gender = models.PositiveIntegerField(
+        verbose_name=_("성별"),
+        choices=GENDERS,
+    )
+    phone_number = models.CharField(
+        verbose_name=_("전화번호"),
+        max_length=14,
+        validators=[phone_number_validator],
+    )
+    is_active = models.BooleanField(
+        verbose_name=_("활성화 여부"),
+        default=True,
+    )
+    is_staff = models.BooleanField(
+        verbose_name=_("직원 여부"),
+        default=False,
+    )
+    is_superuser = models.BooleanField(
+        verbose_name=_("슈퍼유저 여부"),
+        default=False,
+    )
+    last_login = models.DateTimeField(
+        verbose_name=_("최근 로그인"),
+        default=timezone.now,
+    )
+    date_joined = models.DateTimeField(
+        verbose_name=_("가입일"),
+        default=timezone.now,
+    )
 
     objects = UserManager()
 
@@ -129,14 +155,13 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.full_name
 
     class Meta:
-        verbose_name = _("User")
-        verbose_name_plural = _("Users")
+        verbose_name = _("이용자")
 
     USERNAME_FIELD = "username"
     EMAIL_FIELD = "email"
     REQUIRED_FIELDS = [
-        "given_name",
         "surname",
+        "given_name",
         "birthday",
         "gender",
         "phone_number",
@@ -144,45 +169,67 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class UserBranch(models.Model):
-    name = models.ForeignKey(User, on_delete=models.CASCADE)
-    branch = models.ForeignKey(Branch, to_field="srl", on_delete=models.DO_NOTHING)
+    name = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
+    branch = models.ForeignKey(
+        Branch,
+        to_field="srl",
+        on_delete=models.DO_NOTHING,
+    )
+
+    class Meta:
+        verbose_name = _("이용자 지점")
 
 
 class UserLicenseType(models.Model):
     LICENSE_TYPES: Final[dict] = {
-        "1L": _("License 1L"),
-        "1O": _("License 1O"),
-        "1OA": _("License 1OA"),
-        "2O": _("License 2O"),
-        "2OA": _("License 2OA"),
-        "LD": _("License LD"),
+        "1L": _("1종 대형"),
+        "1O": _("1종 보통"),
+        "1OA": _("1종 보통 (자동)"),
+        "2O": _("2종 보통"),
+        "2OA": _("2종 보통 (자동)"),
+        "LD": _("장롱 면허"),
     }
 
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
     license_type = models.CharField(
         max_length=3,
-        verbose_name=_("License Type"),
+        verbose_name=_("면허 유형"),
         choices=LICENSE_TYPES,
-        blank=True,
         null=True,
         default=None,
     )
 
+    class Meta:
+        verbose_name = _("이용자 면허 유형")
+
+
 class UserPlanType(models.Model):
     PLAN_TYPES: Final[dict] = {
-        "T": _("Plan T"),
-        "GA": _("Plan GA"),
-        "GC": _("Plan GC"),
-        "GR": _("Plan GR"),
-        "LD": _("Plan LD"),
+        "T": _("시간제"),
+        "GA": _("합격 보장제"),
+        "GC": _("코스 보장제"),
+        "GR": _("도로 보장제"),
+        "LD": _("장롱 면허"),
     }
 
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
     plan_type = models.CharField(
         max_length=2,
-        verbose_name=_("Plan Type"),
+        verbose_name=_("요금제 유형"),
         choices=PLAN_TYPES,
         blank=True,
         null=True,
         default=None,
     )
+
+    class Meta:
+        verbose_name = _("이용자 요금제")
