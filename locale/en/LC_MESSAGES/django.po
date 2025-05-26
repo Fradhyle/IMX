@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: imx-by-pandamonium\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-26 14:25+0900\n"
-"PO-Revision-Date: 2025-05-26 05:37\n"
+"PO-Revision-Date: 2025-05-26 15:04+0900\n"
 "Last-Translator: Im Donghyeok <fradhyle@gmail.com>\n"
 "Language-Team: English\n"
 "Language: en\n"
@@ -14,77 +14,77 @@ msgstr ""
 "X-Generator: Poedit 3.6\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ../..\n"
-"X-Poedit-SearchPath-0: .\n"
 "X-Crowdin-Project: imx-by-pandamonium\n"
 "X-Crowdin-Project-ID: 793644\n"
 "X-Crowdin-Language: en\n"
 "X-Crowdin-File: /[Fradhyle.IMX] main/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 16\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: .\IMX\validators.py:6
 msgid "올바른 전화번호 형식이 아닙니다."
-msgstr "올바른 전화번호 형식이 아닙니다."
+msgstr ""
 
 #: .\branches\apps.py:8
 msgid "지점 관리"
-msgstr "지점 관리"
+msgstr "Branch Management"
 
 #: .\branches\models.py:14 .\branches\models.py:140
 msgid "연번"
-msgstr "연번"
+msgstr "Serial"
 
 #: .\branches\models.py:18
 msgid "지점명"
-msgstr "지점명"
+msgstr "Branch name"
 
 #: .\branches\models.py:23
 msgid "장비대수"
-msgstr "장비대수"
+msgstr "Equipment count"
 
 #: .\branches\models.py:27
 msgid "우편번호"
-msgstr "우편번호"
+msgstr "Postal code"
 
 #: .\branches\models.py:31
 msgid "도로명 주소"
-msgstr "도로명 주소"
+msgstr "Street address"
 
 #: .\branches\models.py:35
 msgid "상세 주소"
-msgstr "상세 주소"
+msgstr "Detailed address"
 
 #: .\branches\models.py:40
 msgid "전화번호 1"
-msgstr "전화번호 1"
+msgstr "Phone number 1"
 
 #: .\branches\models.py:47
 msgid "전화번호 2"
-msgstr "전화번호 2"
+msgstr "Phone number 2"
 
 #: .\branches\models.py:55
 msgid "영업 여부"
-msgstr "영업 여부"
+msgstr ""
 
 #: .\branches\models.py:58
 msgid "영업 중"
-msgstr "영업 중"
+msgstr ""
 
 #: .\branches\models.py:59
 msgid "폐업"
-msgstr "폐업"
+msgstr ""
 
 #: .\branches\models.py:64 .\branches\models.py:80 .\branches\models.py:102
 #: .\branches\models.py:145
 msgid "지점"
-msgstr "지점"
+msgstr "Branch"
 
 #: .\branches\models.py:83
 msgid "수업 시간"
-msgstr "수업 시간"
+msgstr ""
 
 #: .\branches\models.py:87
 msgid "휴식 시간"
-msgstr "휴식 시간"
+msgstr ""
 
 #: .\branches\models.py:92
 msgid "시간"
@@ -132,47 +132,47 @@ msgstr ""
 
 #: .\users\apps.py:8
 msgid "이용자 관리"
-msgstr ""
+msgstr "User management"
 
 #: .\users\models.py:90
 msgid "남성"
-msgstr "남성"
+msgstr "Male"
 
 #: .\users\models.py:91
 msgid "여성"
-msgstr "여성"
+msgstr "Female"
 
 #: .\users\models.py:95
 msgid "이용자명"
-msgstr "이용자명"
+msgstr "Username"
 
 #: .\users\models.py:100
 msgid "성"
-msgstr "성"
+msgstr "Surname"
 
 #: .\users\models.py:104
 msgid "이름"
-msgstr "이름"
+msgstr "Given name"
 
 #: .\users\models.py:108
 msgid "이메일 주소"
-msgstr "이메일 주소"
+msgstr "Email address"
 
 #: .\users\models.py:113
 msgid "암호"
-msgstr "암호"
+msgstr "Password"
 
 #: .\users\models.py:116
 msgid "생일"
-msgstr "생일"
+msgstr "Birthday"
 
 #: .\users\models.py:119
 msgid "성별"
-msgstr "성별"
+msgstr "Gender"
 
 #: .\users\models.py:123
 msgid "전화번호"
-msgstr "전화번호"
+msgstr "Phone number"
 
 #: .\users\models.py:128
 msgid "활성화 여부"
@@ -196,7 +196,7 @@ msgstr ""
 
 #: .\users\models.py:158
 msgid "이용자"
-msgstr ""
+msgstr "User"
 
 #: .\users\models.py:183
 msgid "이용자 지점"
@@ -228,7 +228,7 @@ msgstr ""
 
 #: .\users\models.py:202
 msgid "면허 유형"
-msgstr ""
+msgstr "License type"
 
 #: .\users\models.py:209
 msgid "이용자 면허 유형"
@@ -252,7 +252,7 @@ msgstr ""
 
 #: .\users\models.py:227
 msgid "요금제 유형"
-msgstr ""
+msgstr "Plan type"
 
 #: .\users\models.py:235
 msgid "이용자 요금제"
