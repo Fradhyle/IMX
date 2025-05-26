@@ -18,7 +18,7 @@ msgstr ""
 "X-Crowdin-Project: imx-by-pandamonium\n"
 "X-Crowdin-Project-ID: 793644\n"
 "X-Crowdin-Language: en\n"
-"X-Crowdin-File: /[Fradhyle.IMX] main/locale/ko/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /[Fradhyle.IMX] main/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 16\n"
 
 #: .\IMX\validators.py:6
@@ -257,7 +257,3 @@ msgstr ""
 #: .\users\models.py:235
 msgid "이용자 요금제"
 msgstr ""
-
-#~ msgid "English"
-#~ msgstr "영어"
-
