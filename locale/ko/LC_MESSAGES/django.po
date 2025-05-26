@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: imx-by-pandamonium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-26 13:30+0900\n"
+"POT-Creation-Date: 2025-05-26 14:25+0900\n"
 "PO-Revision-Date: 2025-05-26 05:10\n"
 "Last-Translator: Im Donghyeok <fradhyle@gmail.com>\n"
 "Language-Team: Korean\n"
@@ -20,14 +20,6 @@ msgstr ""
 "X-Crowdin-Language: ko\n"
 "X-Crowdin-File: /[Fradhyle.IMX] main/locale/ko/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 16\n"
-
-#: .\IMX\settings.py:169
-msgid "한국어"
-msgstr ""
-
-#: .\IMX\settings.py:170
-msgid "English"
-msgstr "영어"
 
 #: .\IMX\validators.py:6
 msgid "올바른 전화번호 형식이 아닙니다."
@@ -266,3 +258,5 @@ msgstr ""
 msgid "이용자 요금제"
 msgstr ""
 
+#~ msgid "English"
+#~ msgstr "영어"
