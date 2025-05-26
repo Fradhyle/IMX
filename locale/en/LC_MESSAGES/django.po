@@ -18,12 +18,12 @@ msgstr ""
 "X-Crowdin-Project: imx-by-pandamonium\n"
 "X-Crowdin-Project-ID: 793644\n"
 "X-Crowdin-Language: en\n"
-"X-Crowdin-File: /[Fradhyle.IMX] main/locale/en/LC_MESSAGES/django.po\n"
-"X-Crowdin-File-ID: 14\n"
+"X-Crowdin-File: /[Fradhyle.IMX] main/locale/ko/LC_MESSAGES/django.po\n"
+"X-Crowdin-File-ID: 16\n"
 
 #: .\IMX\validators.py:6
 msgid "올바른 전화번호 형식이 아닙니다."
-msgstr ""
+msgstr "Phone number is invalid format."
 
 #: .\branches\apps.py:8
 msgid "지점 관리"
@@ -132,7 +132,7 @@ msgstr ""
 
 #: .\users\apps.py:8
 msgid "이용자 관리"
-msgstr "User management"
+msgstr ""
 
 #: .\users\models.py:90
 msgid "남성"
@@ -196,7 +196,7 @@ msgstr ""
 
 #: .\users\models.py:158
 msgid "이용자"
-msgstr "User"
+msgstr ""
 
 #: .\users\models.py:183
 msgid "이용자 지점"
@@ -258,6 +258,6 @@ msgstr ""
 msgid "이용자 요금제"
 msgstr ""
 
-#~ msgid "한국어"
-#~ msgstr "Korean"
+#~ msgid "English"
+#~ msgstr "영어"
 
