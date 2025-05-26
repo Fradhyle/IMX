@@ -18,8 +18,8 @@ msgstr ""
 "X-Crowdin-Project: imx-by-pandamonium\n"
 "X-Crowdin-Project-ID: 793644\n"
 "X-Crowdin-Language: ko\n"
-"X-Crowdin-File: /[Fradhyle.IMX] main/locale/en/LC_MESSAGES/django.po\n"
-"X-Crowdin-File-ID: 14\n"
+"X-Crowdin-File: /[Fradhyle.IMX] main/locale/ko/LC_MESSAGES/django.po\n"
+"X-Crowdin-File-ID: 16\n"
 
 #: .\IMX\settings.py:169
 msgid "한국어"
@@ -27,7 +27,7 @@ msgstr ""
 
 #: .\IMX\settings.py:170
 msgid "English"
-msgstr ""
+msgstr "영어"
 
 #: .\IMX\validators.py:6
 msgid "올바른 전화번호 형식이 아닙니다."
