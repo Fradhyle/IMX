@@ -14,8 +14,6 @@ import os
 from pathlib import Path
 from typing import Any, Final
 
-from django.utils.translation import gettext_lazy as _
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR: Final = Path(__file__).resolve().parent.parent
 
@@ -47,14 +45,14 @@ STORAGES = {
 }
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG: bool = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS: Final[list] = []
 
 
 # Application definition
 
-INSTALLED_APPS: Final = [
+INSTALLED_APPS: Final[list] = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -65,7 +63,7 @@ INSTALLED_APPS: Final = [
     "users.apps.UsersConfig",
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE: Final[list] = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
@@ -76,7 +74,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "IMX.urls"
+ROOT_URLCONF: Final[str] = "IMX.urls"
 
 TEMPLATES: Final[list[dict[str, Any]]] = [
     {
@@ -93,7 +91,7 @@ TEMPLATES: Final[list[dict[str, Any]]] = [
     },
 ]
 
-WSGI_APPLICATION = "IMX.wsgi.application"
+WSGI_APPLICATION: Final[str] = "IMX.wsgi.application"
 
 
 # Database
@@ -110,7 +108,7 @@ DATABASES: Final[dict[str, Any]] = {
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
+AUTH_PASSWORD_VALIDATORS: Final[list[dict[str, str]]] = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
@@ -166,14 +164,14 @@ AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#languages
 
 LANGUAGES = [
-    ("ko", _("한국어")),
-    ("en", _("English")),
+    ("ko", "한국어"),
+    ("en", "English"),
 ]
 
 # LOCALE_PATHS
 # https://docs.djangoproject.com/en/5.2/ref/settings/#locale-paths
 
-LOCALE_PATHS = [
+LOCALE_PATHS: Final[list[str]] = [
     "locale/",
 ]
 
@@ -183,4 +181,4 @@ LOCALE_PATHS = [
 # MEDIA_ROOT
 # https://docs.djangoproject.com/en/5.2/ref/settings/#media-root
 
-MEDIA_ROOT = "media/"
+MEDIA_ROOT: Final[str] = "media/"
