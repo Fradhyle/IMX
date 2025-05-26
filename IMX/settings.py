@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 from pathlib import Path
-from typing import Final
+from typing import Any, Final
 
 from django.utils.translation import gettext_lazy as _
 
@@ -24,12 +24,27 @@ BASE_DIR: Final = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-r8+u&iawflm^0y6kh477cm@xdcdh6%6vry75iib6#-frp72j@h'
+# SECRET_KEY = 'django-insecure-r8+u&iawflm^0y6kh477cm@xdcdh6%6vry75iib6#-frp72j@h''
 try:
-    SECRET_KEY = os.environ["SECRET_KEY"]
+    secret_key: str = os.environ["SECRET_KEY"]
 except KeyError:
     with open(BASE_DIR / "LOCAL_DEV_ENV" / "SECRET_KEY.txt") as f:
-        SECRET_KEY = f.read().replace("\n", "")
+        secret_key: str = f.read().replace("\n", "")
+SECRET_KEY: Final[str] = secret_key
+
+# Storage backends
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        "OPTIONS": {
+            "location": BASE_DIR / "static",
+            "base_url": "/static/",
+        },
+    },
+}
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,19 +54,16 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS: Final = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "branches.apps.BranchesConfig",
+    "users.apps.UsersConfig",
 ]
-
-# Codes to add new apps to INSTALLED_APPS automatically
-exclude = [".git", ".github", "IMX", "locale", "LOCAL_DEV_ENV", "media", "static"]
-apps = [x.name for x in BASE_DIR.glob("*/") if x.name not in exclude]
-INSTALLED_APPS += apps
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -66,7 +78,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "IMX.urls"
 
-TEMPLATES = [
+TEMPLATES: Final[list[dict[str, Any]]] = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [],
@@ -87,7 +99,7 @@ WSGI_APPLICATION = "IMX.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
+DATABASES: Final[dict[str, Any]] = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
@@ -155,7 +167,7 @@ AUTH_USER_MODEL = "users.User"
 
 LANGUAGES = [
     ("ko", _("한국어")),
-    ("en", _("영어")),
+    ("en", _("English")),
 ]
 
 # LOCALE_PATHS

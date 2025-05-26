@@ -1,4 +1,5 @@
 import datetime
+from typing import Any
 
 from django.db import models
 from django.urls import reverse
@@ -73,7 +74,7 @@ class Branch(models.Model):
 
 
 class Duration(models.Model):
-    branch = models.ForeignKey(
+    branch: models.ForeignKey[Any] = models.ForeignKey(
         to="branches.Branch",
         on_delete=models.CASCADE,
         verbose_name=_("지점"),
@@ -95,7 +96,7 @@ class Duration(models.Model):
 
 
 class BusinessHour(models.Model):
-    branch = models.ForeignKey(
+    branch: models.ForeignKey[Any] = models.ForeignKey(
         "branches.Branch",
         on_delete=models.CASCADE,
         verbose_name=_("지점"),
@@ -138,7 +139,7 @@ class Timetable(models.Model):
         primary_key=True,
         verbose_name=_("연번"),
     )
-    branch = models.ForeignKey(
+    branch: models.ForeignKey[Any] = models.ForeignKey(
         "branches.Branch",
         on_delete=models.CASCADE,
         verbose_name=_("지점"),

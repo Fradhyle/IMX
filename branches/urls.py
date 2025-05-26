@@ -18,4 +18,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-urlpatterns = []
+from branches.views import IndexView
+
+urlpatterns = [
+    path("", IndexView.as_view(), name="index"),
+    path("i18n", include("django.conf.urls.i18n")),
+]
