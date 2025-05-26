@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: imx-by-pandamonium\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-26 14:25+0900\n"
-"PO-Revision-Date: 2025-05-26 15:04+0900\n"
+"PO-Revision-Date: 2025-05-26 06:06\n"
 "Last-Translator: Im Donghyeok <fradhyle@gmail.com>\n"
 "Language-Team: English\n"
 "Language: en\n"
@@ -18,12 +18,12 @@ msgstr ""
 "X-Crowdin-Project-ID: 793644\n"
 "X-Crowdin-Language: en\n"
 "X-Crowdin-File: /[Fradhyle.IMX] main/locale/en/LC_MESSAGES/django.po\n"
-"X-Crowdin-File-ID: 16\n"
+"X-Crowdin-File-ID: 14\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: .\IMX\validators.py:6
 msgid "올바른 전화번호 형식이 아닙니다."
-msgstr ""
+msgstr "It is not a valid phone number format."
 
 #: .\branches\apps.py:8
 msgid "지점 관리"
@@ -96,11 +96,11 @@ msgstr ""
 
 #: .\branches\models.py:108 .\branches\models.py:151
 msgid "평일"
-msgstr ""
+msgstr "Weekday"
 
 #: .\branches\models.py:109 .\branches\models.py:152
 msgid "휴일"
-msgstr ""
+msgstr "Holiday"
 
 #: .\branches\models.py:113
 msgid "개점 시간"
@@ -257,3 +257,4 @@ msgstr "Plan type"
 #: .\users\models.py:235
 msgid "이용자 요금제"
 msgstr ""
+
