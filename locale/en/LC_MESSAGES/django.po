@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: imx-by-pandamonium\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-26 14:25+0900\n"
-"PO-Revision-Date: 2025-05-26 06:14\n"
+"PO-Revision-Date: 2025-05-29 02:49\n"
 "Last-Translator: Im Donghyeok <fradhyle@gmail.com>\n"
 "Language-Team: English\n"
 "Language: en\n"
@@ -18,8 +18,8 @@ msgstr ""
 "X-Crowdin-Project: imx-by-pandamonium\n"
 "X-Crowdin-Project-ID: 793644\n"
 "X-Crowdin-Language: en\n"
-"X-Crowdin-File: /[Fradhyle.IMX] main/locale/ko/LC_MESSAGES/django.po\n"
-"X-Crowdin-File-ID: 16\n"
+"X-Crowdin-File: /[Fradhyle.IMX] main/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File-ID: 14\n"
 
 #: .\IMX\validators.py:6
 msgid "올바른 전화번호 형식이 아닙니다."
@@ -204,23 +204,23 @@ msgstr ""
 
 #: .\users\models.py:188
 msgid "1종 대형"
-msgstr ""
+msgstr "1st Class Large"
 
 #: .\users\models.py:189
 msgid "1종 보통"
-msgstr ""
+msgstr "1st Class Ordinary"
 
 #: .\users\models.py:190
 msgid "1종 보통 (자동)"
-msgstr ""
+msgstr "1st Class Ordinary (Automatic)"
 
 #: .\users\models.py:191
 msgid "2종 보통"
-msgstr ""
+msgstr "2nd Class Ordinary"
 
 #: .\users\models.py:192
 msgid "2종 보통 (자동)"
-msgstr ""
+msgstr "2nd Class Ordinary (Automatic)"
 
 #: .\users\models.py:193 .\users\models.py:218
 msgid "장롱 면허"
@@ -232,7 +232,7 @@ msgstr "License type"
 
 #: .\users\models.py:209
 msgid "이용자 면허 유형"
-msgstr ""
+msgstr "User License Type"
 
 #: .\users\models.py:214
 msgid "시간제"
