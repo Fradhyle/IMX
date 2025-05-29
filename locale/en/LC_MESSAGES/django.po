@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: imx-by-pandamonium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-26 14:25+0900\n"
+"POT-Creation-Date: 2025-05-29 12:16+0900\n"
 "PO-Revision-Date: 2025-05-26 06:14\n"
 "Last-Translator: Im Donghyeok <fradhyle@gmail.com>\n"
 "Language-Team: English\n"
@@ -134,127 +134,125 @@ msgstr ""
 msgid "이용자 관리"
 msgstr "User management"
 
-#: .\users\models.py:90
+#: .\users\models.py:84
 msgid "남성"
 msgstr "Male"
 
-#: .\users\models.py:91
+#: .\users\models.py:85
 msgid "여성"
 msgstr "Female"
 
-#: .\users\models.py:95
-msgid "이용자명"
-msgstr "Username"
-
-#: .\users\models.py:100
-msgid "성"
-msgstr "Surname"
-
-#: .\users\models.py:104
-msgid "이름"
-msgstr "Given name"
-
-#: .\users\models.py:108
-msgid "이메일 주소"
-msgstr "Email address"
-
-#: .\users\models.py:113
-msgid "암호"
-msgstr "Password"
-
-#: .\users\models.py:116
-msgid "생일"
-msgstr "Birthday"
-
-#: .\users\models.py:119
-msgid "성별"
-msgstr "Gender"
-
-#: .\users\models.py:123
+#: .\users\models.py:88
 msgid "전화번호"
 msgstr "Phone number"
 
-#: .\users\models.py:128
+#: .\users\models.py:93
+msgid "성"
+msgstr "Surname"
+
+#: .\users\models.py:97
+msgid "이름"
+msgstr "Given name"
+
+#: .\users\models.py:101
+msgid "이메일 주소"
+msgstr "Email address"
+
+#: .\users\models.py:106
+msgid "암호"
+msgstr "Password"
+
+#: .\users\models.py:109
+msgid "생일"
+msgstr "Birthday"
+
+#: .\users\models.py:112
+msgid "성별"
+msgstr "Gender"
+
+#: .\users\models.py:116
 msgid "활성화 여부"
 msgstr ""
 
-#: .\users\models.py:132
+#: .\users\models.py:120
 msgid "직원 여부"
 msgstr ""
 
-#: .\users\models.py:136
+#: .\users\models.py:124
 msgid "슈퍼유저 여부"
 msgstr ""
 
-#: .\users\models.py:140
+#: .\users\models.py:128
 msgid "최근 로그인"
 msgstr ""
 
-#: .\users\models.py:144
+#: .\users\models.py:132
 msgid "가입일"
 msgstr ""
 
-#: .\users\models.py:158
+#: .\users\models.py:146
 msgid "이용자"
 msgstr "User"
 
-#: .\users\models.py:183
+#: .\users\models.py:171
 msgid "이용자 지점"
 msgstr ""
 
-#: .\users\models.py:188
+#: .\users\models.py:176
 msgid "1종 대형"
 msgstr ""
 
-#: .\users\models.py:189
+#: .\users\models.py:177
 msgid "1종 보통"
 msgstr ""
 
-#: .\users\models.py:190
+#: .\users\models.py:178
 msgid "1종 보통 (자동)"
 msgstr ""
 
-#: .\users\models.py:191
+#: .\users\models.py:179
 msgid "2종 보통"
 msgstr ""
 
-#: .\users\models.py:192
+#: .\users\models.py:180
 msgid "2종 보통 (자동)"
 msgstr ""
 
-#: .\users\models.py:193 .\users\models.py:218
+#: .\users\models.py:181 .\users\models.py:206
 msgid "장롱 면허"
 msgstr ""
 
-#: .\users\models.py:202
+#: .\users\models.py:190
 msgid "면허 유형"
 msgstr "License type"
 
-#: .\users\models.py:209
+#: .\users\models.py:197
 msgid "이용자 면허 유형"
 msgstr ""
 
-#: .\users\models.py:214
+#: .\users\models.py:202
 msgid "시간제"
 msgstr ""
 
-#: .\users\models.py:215
+#: .\users\models.py:203
 msgid "합격 보장제"
 msgstr ""
 
-#: .\users\models.py:216
+#: .\users\models.py:204
 msgid "코스 보장제"
 msgstr ""
 
-#: .\users\models.py:217
+#: .\users\models.py:205
 msgid "도로 보장제"
 msgstr ""
 
-#: .\users\models.py:227
+#: .\users\models.py:215
 msgid "요금제 유형"
 msgstr "Plan type"
 
-#: .\users\models.py:235
+#: .\users\models.py:223
 msgid "이용자 요금제"
 msgstr ""
 
+#~ msgid "이용자명"
+#~ msgstr "Username"
