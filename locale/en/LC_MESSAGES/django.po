@@ -253,6 +253,3 @@ msgstr "Plan type"
 #: .\users\models.py:223
 msgid "이용자 요금제"
 msgstr "User Plan"
-
-#~ msgid "이용자명"
-#~ msgstr "Username"
