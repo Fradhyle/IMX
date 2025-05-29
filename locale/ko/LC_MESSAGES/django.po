@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: IMX\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-26 14:25+0900\n"
-"PO-Revision-Date: 2025-05-29 03:16\n"
+"PO-Revision-Date: 2025-05-29 03:36\n"
 "Last-Translator: Im Donghyeok <fradhyle@gmail.com>\n"
 "Language-Team: Korean\n"
 "Language: ko\n"
@@ -256,3 +256,4 @@ msgstr "이용자 요금제"
 
 #~ msgid "이용자명"
 #~ msgstr "이용자명"
+
