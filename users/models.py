@@ -17,21 +17,19 @@ from IMX.validators import phone_number_validator
 class UserManager(BaseUserManager):
     def create_user(
         self,
-        username,
+        phone_number,
         surname,
         given_name,
         birthday,
         gender,
-        phone_number,
         password=None,
     ):
         user = self.model(
-            username=username,
+            phone_number=phone_number,
             surname=surname,
             given_name=given_name,
             birthday=birthday,
             gender=gender,
-            phone_number=phone_number,
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -39,21 +37,19 @@ class UserManager(BaseUserManager):
 
     def create_staff(
         self,
-        username,
+        phone_number,
         surname,
         given_name,
         birthday,
         gender,
-        phone_number,
         password=None,
     ):
         user = self.create_user(
-            username=username,
+            phone_number=phone_number,
             surname=surname,
             given_name=given_name,
             birthday=birthday,
             gender=gender,
-            phone_number=phone_number,
             password=password,
         )
         user.is_staff = True
@@ -62,21 +58,19 @@ class UserManager(BaseUserManager):
 
     def create_superuser(
         self,
-        username,
+        phone_number,
         surname,
         given_name,
         birthday,
         gender,
-        phone_number,
         password=None,
     ):
         user = self.create_user(
-            username=username,
             surname=surname,
+            phone_number=phone_number,
             given_name=given_name,
             birthday=birthday,
             gender=gender,
-            phone_number=phone_number,
             password=password,
         )
         user.is_staff = True
@@ -90,11 +84,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         1: _("남성"),
         2: _("여성"),
     }
-
-    username = models.CharField(
-        verbose_name=_("이용자명"),
-        max_length=20,
-        unique=True,
+    phone_number = models.CharField(
+        verbose_name=_("전화번호"),
+        max_length=14,
+        validators=[phone_number_validator],
     )
     surname = models.CharField(
         verbose_name=_("성"),
@@ -118,11 +111,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     gender = models.PositiveIntegerField(
         verbose_name=_("성별"),
         choices=GENDERS,
-    )
-    phone_number = models.CharField(
-        verbose_name=_("전화번호"),
-        max_length=14,
-        validators=[phone_number_validator],
     )
     is_active = models.BooleanField(
         verbose_name=_("활성화 여부"),
@@ -157,14 +145,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _("이용자")
 
-    USERNAME_FIELD = "username"
+    USERNAME_FIELD = "phone_number"
     EMAIL_FIELD = "email"
     REQUIRED_FIELDS = [
+        "phone_number",
         "surname",
         "given_name",
         "birthday",
         "gender",
-        "phone_number",
     ]
 
 
@@ -190,7 +178,7 @@ class UserLicenseType(models.Model):
         "1OA": _("1종 보통 (자동)"),
         "2O": _("2종 보통"),
         "2OA": _("2종 보통 (자동)"),
-        "LD": _("장롱 면허"),
+        "IL": _("장롱 면허"),
     }
 
     username = models.ForeignKey(
