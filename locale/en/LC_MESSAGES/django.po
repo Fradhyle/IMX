@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: imx-by-pandamonium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-29 12:16+0900\n"
-"PO-Revision-Date: 2025-05-26 06:14\n"
+"POT-Creation-Date: 2025-05-26 14:25+0900\n"
+"PO-Revision-Date: 2025-05-29 03:16\n"
 "Last-Translator: Im Donghyeok <fradhyle@gmail.com>\n"
 "Language-Team: English\n"
 "Language: en\n"
@@ -63,15 +63,15 @@ msgstr "Phone number 2"
 
 #: .\branches\models.py:55
 msgid "영업 여부"
-msgstr ""
+msgstr "Is Operating"
 
 #: .\branches\models.py:58
 msgid "영업 중"
-msgstr ""
+msgstr "In Business"
 
 #: .\branches\models.py:59
 msgid "폐업"
-msgstr ""
+msgstr "Out of Business"
 
 #: .\branches\models.py:64 .\branches\models.py:80 .\branches\models.py:102
 #: .\branches\models.py:145
@@ -80,19 +80,19 @@ msgstr "Branch"
 
 #: .\branches\models.py:83
 msgid "수업 시간"
-msgstr ""
+msgstr "Class Time"
 
 #: .\branches\models.py:87
 msgid "휴식 시간"
-msgstr ""
+msgstr "Break Time"
 
 #: .\branches\models.py:92
 msgid "시간"
-msgstr ""
+msgstr "Duration"
 
 #: .\branches\models.py:105 .\branches\models.py:148
 msgid "평일 여부"
-msgstr ""
+msgstr "Is Weekday"
 
 #: .\branches\models.py:108 .\branches\models.py:151
 msgid "평일"
@@ -104,31 +104,31 @@ msgstr "Holiday"
 
 #: .\branches\models.py:113
 msgid "개점 시간"
-msgstr ""
+msgstr "Open Time"
 
 #: .\branches\models.py:117
 msgid "폐점 시간"
-msgstr ""
+msgstr "Close Time"
 
 #: .\branches\models.py:122
 msgid "영업 시간"
-msgstr ""
+msgstr "Business Hours"
 
 #: .\branches\models.py:158
 msgid "교시"
-msgstr ""
+msgstr "Period"
 
 #: .\branches\models.py:161
 msgid "시작 시간"
-msgstr ""
+msgstr "Start Time"
 
 #: .\branches\models.py:164
 msgid "종료 시간"
-msgstr ""
+msgstr "End Time"
 
 #: .\branches\models.py:168
 msgid "시간표"
-msgstr ""
+msgstr "Timetable"
 
 #: .\users\apps.py:8
 msgid "이용자 관리"
@@ -172,23 +172,23 @@ msgstr "Gender"
 
 #: .\users\models.py:116
 msgid "활성화 여부"
-msgstr ""
+msgstr "Is Active"
 
 #: .\users\models.py:120
 msgid "직원 여부"
-msgstr ""
+msgstr "Is Staff"
 
 #: .\users\models.py:124
 msgid "슈퍼유저 여부"
-msgstr ""
+msgstr "Is Superuser"
 
 #: .\users\models.py:128
 msgid "최근 로그인"
-msgstr ""
+msgstr "Last Login"
 
 #: .\users\models.py:132
 msgid "가입일"
-msgstr ""
+msgstr "Date Joined"
 
 #: .\users\models.py:146
 msgid "이용자"
@@ -196,31 +196,31 @@ msgstr "User"
 
 #: .\users\models.py:171
 msgid "이용자 지점"
-msgstr ""
+msgstr "User Branch"
 
 #: .\users\models.py:176
 msgid "1종 대형"
-msgstr ""
+msgstr "1st Class Large"
 
 #: .\users\models.py:177
 msgid "1종 보통"
-msgstr ""
+msgstr "1st Class Ordinary"
 
 #: .\users\models.py:178
 msgid "1종 보통 (자동)"
-msgstr ""
+msgstr "1st Class Ordinary (Automatic)"
 
 #: .\users\models.py:179
 msgid "2종 보통"
-msgstr ""
+msgstr "2nd Class Ordinary"
 
 #: .\users\models.py:180
 msgid "2종 보통 (자동)"
-msgstr ""
+msgstr "2nd Class Ordinary (Automatic)"
 
 #: .\users\models.py:181 .\users\models.py:206
 msgid "장롱 면허"
-msgstr ""
+msgstr "Inactive License"
 
 #: .\users\models.py:190
 msgid "면허 유형"
@@ -228,23 +228,23 @@ msgstr "License type"
 
 #: .\users\models.py:197
 msgid "이용자 면허 유형"
-msgstr ""
+msgstr "User License Type"
 
 #: .\users\models.py:202
 msgid "시간제"
-msgstr ""
+msgstr "Time Based Plan"
 
 #: .\users\models.py:203
 msgid "합격 보장제"
-msgstr ""
+msgstr "Gurantee All Plan"
 
 #: .\users\models.py:204
 msgid "코스 보장제"
-msgstr ""
+msgstr "Gurantee Course Plan"
 
 #: .\users\models.py:205
 msgid "도로 보장제"
-msgstr ""
+msgstr "Gurantee Road Plan"
 
 #: .\users\models.py:215
 msgid "요금제 유형"
@@ -252,7 +252,7 @@ msgstr "Plan type"
 
 #: .\users\models.py:223
 msgid "이용자 요금제"
-msgstr ""
+msgstr "User Plan"
 
 #~ msgid "이용자명"
 #~ msgstr "Username"
