@@ -140,6 +140,7 @@ class Timetable(models.Model):
         "is_weekday",
         "period",
         verbose_name=_("기본 키"),
+        help_text=_("지점, 평일 여부, 교시로 구성된 복합 기본 키"),
     )
     branch: models.ForeignKey[Any] = models.ForeignKey(
         "branches.Branch",
