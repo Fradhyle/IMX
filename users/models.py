@@ -152,6 +152,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
         verbose_name = _("이용자")
+        verbose_name_plural = _("이용자")
 
     USERNAME_FIELD = "phone_number"
     EMAIL_FIELD = "email"

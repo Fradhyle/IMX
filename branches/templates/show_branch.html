@@ -1,0 +1,36 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ app_verbose_name }} - 지점 보기</title>
+    </head>
+
+    <body>
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>
+                        이름
+                    </td>
+                    <td>
+                        값
+                    </td>
+            </thead>
+            <tbody>
+                {% for item in branch %}
+                <tr>
+                    <td>
+                        {{ item.name }}
+                    </td>
+                    <td>
+                        {{ item.value }}
+                    </td>
+                </tr>
+                {% endfor %}
+                {{ error }}
+            </tbody>
+        </table>
+    </body>
+</html>
