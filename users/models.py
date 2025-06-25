@@ -1,3 +1,4 @@
+import uuid
 from typing import Final
 
 from django.contrib.auth.models import (
@@ -84,10 +85,17 @@ class User(AbstractBaseUser, PermissionsMixin):
         1: _("남성"),
         2: _("여성"),
     }
+    serial = models.BigAutoField(
+        verbose_name=_("연번"),
+        primary_key=True,
+    )
     phone_number = models.CharField(
         verbose_name=_("전화번호"),
         max_length=14,
-        validators=[phone_number_validator],
+        validators=[
+            phone_number_validator,
+        ],
+        unique=True,
     )
     surname = models.CharField(
         verbose_name=_("성"),
@@ -144,11 +152,11 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
         verbose_name = _("이용자")
+        verbose_name_plural = _("이용자")
 
     USERNAME_FIELD = "phone_number"
     EMAIL_FIELD = "email"
     REQUIRED_FIELDS = [
-        "phone_number",
         "surname",
         "given_name",
         "birthday",

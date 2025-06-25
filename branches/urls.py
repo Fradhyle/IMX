@@ -18,9 +18,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from branches.views import IndexView
+from branches.views import CreateBranchView, IndexView, ShowBranchView
 
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
     path("i18n", include("django.conf.urls.i18n")),
+    path("show/<int:serial>/", ShowBranchView.as_view(), name="show_branch"),
+    path("show", ShowBranchView.as_view(), name="show_branch"),
+    path("create", CreateBranchView.as_view(), name="create_branch"),
 ]

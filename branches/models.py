@@ -11,8 +11,8 @@ from IMX.validators import phone_number_validator
 # Create your models here.
 class Branch(models.Model):
     serial = models.BigAutoField(
-        verbose_name=_("연번"),
         primary_key=True,
+        verbose_name=_("연번"),
     )
     name = models.CharField(
         verbose_name=_("지점명"),
@@ -135,9 +135,12 @@ class BusinessHour(models.Model):
 
 
 class Timetable(models.Model):
-    serial = models.BigAutoField(
-        primary_key=True,
-        verbose_name=_("연번"),
+    pk = models.CompositePrimaryKey(
+        "branch",
+        "is_weekday",
+        "period",
+        verbose_name=_("기본 키"),
+        help_text=_("지점, 평일 여부, 교시로 구성된 복합 기본 키"),
     )
     branch: models.ForeignKey[Any] = models.ForeignKey(
         "branches.Branch",

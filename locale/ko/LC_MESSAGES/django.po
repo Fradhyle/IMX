@@ -261,4 +261,3 @@ msgstr "요금제 유형"
 #: .\users\models.py:231
 msgid "이용자 요금제"
 msgstr "이용자 요금제"
-
