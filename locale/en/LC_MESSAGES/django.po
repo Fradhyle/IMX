@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: imx-by-pandamonium\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-25 16:00+0900\n"
-"PO-Revision-Date: 2025-06-25 07:04\n"
+"PO-Revision-Date: 2025-06-25 07:16\n"
 "Last-Translator: Im Donghyeok <fradhyle@gmail.com>\n"
 "Language-Team: English\n"
 "Language: en\n"
@@ -17,8 +17,8 @@ msgstr ""
 "X-Crowdin-Project: imx-by-pandamonium\n"
 "X-Crowdin-Project-ID: 793644\n"
 "X-Crowdin-Language: en\n"
-"X-Crowdin-File: /[Fradhyle.IMX] main/locale/ko/LC_MESSAGES/django.po\n"
-"X-Crowdin-File-ID: 16\n"
+"X-Crowdin-File: /[Fradhyle.IMX] main/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File-ID: 14\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: .\IMX\validators.py:6
@@ -116,11 +116,11 @@ msgstr "Business Hours"
 
 #: .\branches\models.py:142
 msgid "기본 키"
-msgstr ""
+msgstr "Primary key"
 
 #: .\branches\models.py:143
 msgid "지점, 평일 여부, 교시로 구성된 복합 기본 키"
-msgstr ""
+msgstr "Composite primary key consists of branch, weekday or not, period"
 
 #: .\branches\models.py:161
 msgid "교시"
