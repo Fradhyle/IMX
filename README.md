@@ -4,6 +4,7 @@ IMX (아이맥스)는 Python 기반으로 학원, 교습소 등의 현장에서 
 ### 환경
 - Python (최신 버전 유지)
     - ~~Anaconda 배포판으로 최신 버전을 유지하며, 패키지 업데이트는 conda-forge에서만 함~~
+    - [![Code style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) 포매터로 포매팅할 것
 - Django (최신 버전 유지) ← 추후 다른 프레임워크로 변경
 ### 목표
 #### 최소 기능 제품 구현
