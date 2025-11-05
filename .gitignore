@@ -222,3 +222,6 @@ media/
 # Local environment related
 LOCAL_DEV_ENV/
 config.json
+
+# Visual Studio
+.vs/
