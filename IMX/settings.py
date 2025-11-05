@@ -24,8 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # LOCAL ENVIRONMENT ONLY
 # Load configuration from config.json
-with open(BASE_DIR / "config.json") as f:
-    config = json.load(f)
+try:
+    with open(BASE_DIR / "config.json") as f:
+        config = json.load(f)
+except FileNotFoundError:
+    config = {}
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-==ef^6kp918rq!z(bo@gq7_-8nwd!ff@hdh6kq*@o3vhs-#nu1"
