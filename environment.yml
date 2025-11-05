@@ -4,4 +4,4 @@ channels:
 dependencies:
   - python
   - pip
-  - Django
+  - django
