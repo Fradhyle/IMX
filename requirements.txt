@@ -1,4 +1,4 @@
-Django>=5.2.7
+Django
 # Install this for internationalization. Only in Windows
 # gettext
 # Install this only when use it with Microsoft SQL Server
