@@ -32,6 +32,8 @@ except FileNotFoundError:
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-==ef^6kp918rq!z(bo@gq7_-8nwd!ff@hdh6kq*@o3vhs-#nu1"
+# Get secret key from host provider's secrets storage.
+# If not exist, get secret key from local configuration.
 try:
     secret_key: str = os.environ["DJANGO_SECRET_KEY"]
 except KeyError:
