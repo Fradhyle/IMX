@@ -1,5 +1,1 @@
 Django
-# Install this for internationalization. Only in Windows
-# gettext
-# Install this only when use it with Microsoft SQL Server
-# mssql-django

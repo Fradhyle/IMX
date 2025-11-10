@@ -116,3 +116,44 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self) -> str:
         return self.full_name
+
+
+class UserDetail(models.Model):
+    class PlanType(models.TextChoices):
+        TIM = "TIM", "시간제"
+        # All Test Gurantee
+        ATG = "ATG", "전체합격보장제"
+        # Driving Course Test Gurantee
+        CTG = "CTG", "기능시험 합격보장제"
+        # On-Road Driving Exam
+        # Driving Test Guarantee
+        DTG = "DTG", "도로주행시험 합격보장제"
+
+    class LicenseType(models.TextChoices):
+        L1 = "1L", "1종 대형"
+        O1 = "1O", "1종 보통"
+        O1A = "1OA", "1종 보통 (자동)"
+        O2 = "2O", "2종 보통"
+        O2A = "2OA", "2종 보통 (자동)"
+        # 영어에는 장롱면허를 나타내는 단어가 없어서 'Practice'로 쓰기로 함
+        PRA = "PRA", "장롱면허"
+
+    user = models.OneToOneField(
+        "User",
+        on_delete=models.CASCADE,
+        related_name="detail",
+    )
+    plan_type = models.CharField(
+        max_length=3,
+        choices=PlanType.choices,
+        verbose_name="요금제",
+    )
+    license_type = models.CharField(
+        max_length=3,
+        choices=LicenseType.choices,
+        verbose_name="면허 종류",
+    )
+
+    class Meta:
+        verbose_name = "이용자 상세 정보"
+        verbose_name_plural = "이용자 상세 정보"
