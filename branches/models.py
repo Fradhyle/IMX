@@ -1,4 +1,3 @@
-from tabnanny import verbose
 from typing import Final
 
 from django.db import models
