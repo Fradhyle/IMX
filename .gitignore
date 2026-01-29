@@ -225,3 +225,9 @@ config.json
 
 # Visual Studio
 .vs/
+
+# Firebase Studio
+#  Formerly known as Project IDX
+#  https://studio.firebase.google.com/
+#  https://firebase.studio/
+.idx/
