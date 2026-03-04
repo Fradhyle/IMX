@@ -4,5 +4,5 @@ channels:
 dependencies:
   - python>=3.12
   - pip
-  - django>=6.0
+  - django>=6.0.2
   - black
