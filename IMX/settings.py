@@ -60,7 +60,6 @@ INSTALLED_APPS: Final[list[str]] = [
     "django.contrib.staticfiles",
     # Custom apps
     "users",
-    "branches",
 ]
 
 MIDDLEWARE: Final[list[str]] = [
