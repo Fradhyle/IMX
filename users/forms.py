@@ -22,8 +22,8 @@ class CreateUserForm(UserCreationForm):
             "birth_date": forms.DateInput(attrs={"type": "date"}),
         }
 
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
 
 class ChangeUserForm(UserChangeForm):
