@@ -129,7 +129,7 @@ LANGUAGE_CODE: Final[str] = "ko-kr"
 
 TIME_ZONE: Final[str] = "Asia/Seoul"
 
-USE_I18N: Final[bool] = False
+USE_I18N: Final[bool] = True
 
 USE_TZ: Final[bool] = True
 
