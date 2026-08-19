@@ -1,0 +1,46 @@
+name: Auto Format Python Code
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  format:
+    name: Run Black and isort
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7.0.1
+
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Sort Imports
+        uses: isort/isort-action@v1.1.1
+        with:
+          configuration: "--profile black"
+
+      - name: Format Code
+        uses: psf/black@stable
+        with:
+          jupyter: true
+          options: "."
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v8.1.1
+        with:
+          commit-message: "Format codes with Black and isort"
+          title: "Code Auto-format"
+          body: "Automatically formatted by Black and isort"
+          branch: "style/auto-format"
+          delete-branch: true
