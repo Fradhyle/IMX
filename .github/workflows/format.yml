@@ -25,6 +25,9 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Install isort Jupyter Support
+        run: pip install "isort[jupyter]"
+
       - name: Sort Imports
         uses: isort/isort-action@v1.1.1
         with:
