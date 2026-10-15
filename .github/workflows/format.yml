@@ -49,3 +49,4 @@ jobs:
           body: "Automatically formatted by Black and isort"
           branch: "style/auto-format"
           delete-branch: true
+          base: "main"
